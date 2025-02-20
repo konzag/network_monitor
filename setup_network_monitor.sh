@@ -1,60 +1,37 @@
 #!/bin/bash
 set -x  # Ενεργοποίηση debug mode
-# 1. Φόρτωση κρυπτογραφημένων ρυθμίσεων Pushover
-CONFIG_FILE="/home/pi/.config/pushover_config.enc"
-if [ -f "$CONFIG_FILE" ]; then
-    DECRYPTED_CONFIG=$(openssl enc -d -aes-256-cbc -in "$CONFIG_FILE" -pass pass:mysecretpassword)
-    eval "$DECRYPTED_CONFIG"
-else
-    echo "Error: Pushover config file not found!"
-    exit 1
-fi
 
-# 2. Φόρτωση του δικτύου
-NETWORK_CONFIG="/path/to/network_config"
-if [ -f "$NETWORK_CONFIG" ]; then
-    NETWORK=$(cat "$NETWORK_CONFIG")
-else
-    echo "Error: Network config file not found!"
-    exit 1
-fi
+CONFIG_DIR="/home/pi/.config"
+CONFIG_FILE="$CONFIG_DIR/pushover_config.enc"
+KNOWN_HOSTS_FILE="/home/pi/.config/known_hosts"
+NETWORK_CONFIG="/home/pi/.config/network_config"
 
-# 3. Αρχείο γνωστών συσκευών
-KNOWN_HOSTS_FILE="/path/to/known_hosts"
+# Βεβαιώσου ότι το config directory υπάρχει
+mkdir -p "$CONFIG_DIR"
 
-# 4. Εντοπισμός συσκευών με Nmap
-nmap -sn $NETWORK -oG - | awk '/Up$/{print $2, $3}' > /tmp/current_devices.txt
+# Ζήτα από τον χρήστη τα API Token & User Key
+read -p "Enter your Pushover API Token: " API_TOKEN
+read -p "Enter your Pushover User Key: " USER_KEY
 
-# 5. Σύγκριση με τις γνωστές συσκευές
-while read -r ip mac; do
-    if ! grep -q "$mac" "$KNOWN_HOSTS_FILE"; then
-        # Νέα συσκευή
-        manufacturer=$(curl -s "https://api.macvendors.com/$mac")
-        message="Νέα συσκευή συνδέθηκε: $mac ($manufacturer) - IP: $ip"
-        echo "$mac $ip" >> "$KNOWN_HOSTS_FILE"
+# Κρυπτογράφηση των credentials
+echo "API_TOKEN=\"$API_TOKEN\"" > /tmp/pushover_config
+echo "USER_KEY=\"$USER_KEY\"" >> /tmp/pushover_config
+openssl enc -aes-256-cbc -salt -in /tmp/pushover_config -out "$CONFIG_FILE" -pass pass:mysecretpassword
+rm /tmp/pushover_config
 
-        # Ειδοποίηση στο desktop
-        notify-send "Νέα συσκευή" "$message"
+echo "Pushover credentials saved securely."
 
-        # Ειδοποίηση στο Android μέσω Pushover
-        curl -s --form-string "token=$API_TOKEN" --form-string "user=$USER_KEY" --form-string "message=$message" https://api.pushover.net/1/messages.json
-    fi
-done < /tmp/current_devices.txt
+# Ζήτα από τον χρήστη το δίκτυο που θα σαρώνεται
+read -p "Enter the network to scan (e.g., 192.168.1.0/24): " NETWORK
+echo "$NETWORK" > "$NETWORK_CONFIG"
 
-# 6. Έλεγχος για αποσυνδεδεμένες συσκευές
-while read -r mac ip; do
-    if ! grep -q "$mac" /tmp/current_devices.txt; then
-        # Αποσυνδεδεμένη συσκευή
-        manufacturer=$(curl -s "https://api.macvendors.com/$mac")
-        message="Η συσκευή αποσυνδέθηκε: $mac ($manufacturer) - IP: $ip"
+# Δημιουργία αρχείου known_hosts αν δεν υπάρχει
+touch "$KNOWN_HOSTS_FILE"
 
-        # Ειδοποίηση στο desktop
-        notify-send "Αποσυνδέθηκε συσκευή" "$message"
+# Δώσε τα κατάλληλα δικαιώματα
+chmod 600 "$CONFIG_FILE"
+chmod 644 "$KNOWN_HOSTS_FILE"
+chmod 644 "$NETWORK_CONFIG"
 
-        # Ειδοποίηση στο Android μέσω Pushover
-        curl -s --form-string "token=$API_TOKEN" --form-string "user=$USER_KEY" --form-string "message=$message" https://api.pushover.net/1/messages.json
+echo "Setup complete. You can now run ./network_monitor.sh"
 
-        # Αφαίρεση από τη λίστα γνωστών συσκευών
-        sed -i "/$mac/d" "$KNOWN_HOSTS_FILE"
-    fi
-done < "$KNOWN_HOSTS_FILE"
