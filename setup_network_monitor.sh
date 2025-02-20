@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x  # Ενεργοποίηση debug mode
 # 1. Φόρτωση κρυπτογραφημένων ρυθμίσεων Pushover
 CONFIG_FILE="/home/pi/.config/pushover_config.enc"
 if [ -f "$CONFIG_FILE" ]; then
@@ -58,3 +58,4 @@ while read -r mac ip; do
         sed -i "/$mac/d" "$KNOWN_HOSTS_FILE"
     fi
 done < "$KNOWN_HOSTS_FILE"
+
