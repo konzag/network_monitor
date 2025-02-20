@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x  # Ενεργοποίηση debug mode
+
 # 1. Φόρτωση κρυπτογραφημένων ρυθμίσεων Pushover
 CONFIG_FILE="/home/pi/.config/pushover_config.enc"
 if [ -f "$CONFIG_FILE" ]; then

@@ -1,37 +1,47 @@
 #!/bin/bash
 set -x  # Ενεργοποίηση debug mode
 
-CONFIG_DIR="/home/pi/.config"
-CONFIG_FILE="$CONFIG_DIR/pushover_config.enc"
-KNOWN_HOSTS_FILE="/home/pi/.config/known_hosts"
-NETWORK_CONFIG="/home/pi/.config/network_config"
+# 1. Δημιουργία αρχείου known_hosts
+KNOWN_HOSTS_FILE="/path/to/known_hosts"
+if [ ! -f "$KNOWN_HOSTS_FILE" ]; then
+    touch "$KNOWN_HOSTS_FILE"
+    echo "Το αρχείο known_hosts δημιουργήθηκε: $KNOWN_HOSTS_FILE"
+else
+    echo "Το αρχείο known_hosts υπάρχει ήδη: $KNOWN_HOSTS_FILE"
+fi
 
-# Βεβαιώσου ότι το config directory υπάρχει
-mkdir -p "$CONFIG_DIR"
+# 2. Ρώτηση για API Token και User Key
+echo "Παρακαλώ εισάγετε το API Token του Pushover:"
+read -r API_TOKEN
+echo "Παρακαλώ εισάγετε το User Key του Pushover:"
+read -r USER_KEY
 
-# Ζήτα από τον χρήστη τα API Token & User Key
-read -p "Enter your Pushover API Token: " API_TOKEN
-read -p "Enter your Pushover User Key: " USER_KEY
+# 3. Αποθήκευση σε κρυπτογραφημένο αρχείο
+CONFIG_FILE="/home/pi/.config/pushover_config.enc"
+echo "API_TOKEN=$API_TOKEN" > /tmp/pushover_config.tmp
+echo "USER_KEY=$USER_KEY" >> /tmp/pushover_config.tmp
 
-# Κρυπτογράφηση των credentials
-echo "API_TOKEN=\"$API_TOKEN\"" > /tmp/pushover_config
-echo "USER_KEY=\"$USER_KEY\"" >> /tmp/pushover_config
-openssl enc -aes-256-cbc -salt -in /tmp/pushover_config -out "$CONFIG_FILE" -pass pass:mysecretpassword
-rm /tmp/pushover_config
+# Κρυπτογράφηση του αρχείου με openssl
+openssl enc -aes-256-cbc -salt -in /tmp/pushover_config.tmp -out "$CONFIG_FILE" -pass pass:mysecretpassword
+rm /tmp/pushover_config.tmp
 
-echo "Pushover credentials saved securely."
+echo "Τα στοιχεία αποθηκεύτηκαν κρυπτογραφημένα στο: $CONFIG_FILE"
 
-# Ζήτα από τον χρήστη το δίκτυο που θα σαρώνεται
-read -p "Enter the network to scan (e.g., 192.168.1.0/24): " NETWORK
-echo "$NETWORK" > "$NETWORK_CONFIG"
+# 4. Ρώτηση για το δίκτυο
+echo "Παρακαλώ εισάγετε το δίκτυο που θέλετε να παρακολουθείτε (π.χ. 192.168.1.0/24):"
+read -r NETWORK
 
-# Δημιουργία αρχείου known_hosts αν δεν υπάρχει
-touch "$KNOWN_HOSTS_FILE"
+# Αποθήκευση του δικτύου σε αρχείο
+echo "$NETWORK" > /path/to/network_config
+echo "Το δίκτυο αποθηκεύτηκε: $NETWORK"
 
-# Δώσε τα κατάλληλα δικαιώματα
+# 5. Ορισμός δικαιωμάτων
 chmod 600 "$CONFIG_FILE"
-chmod 644 "$KNOWN_HOSTS_FILE"
-chmod 644 "$NETWORK_CONFIG"
+chmod 600 "$KNOWN_HOSTS_FILE"
+chmod 600 /path/to/network_config
 
-echo "Setup complete. You can now run ./network_monitor.sh"
+echo "Τα δικαιώματα ορίστηκαν σωστά."
 
+# 6. Εκτέλεση του κύριου script
+echo "Εκτέλεση του κύριου script..."
+/path/to/network_monitor.sh
