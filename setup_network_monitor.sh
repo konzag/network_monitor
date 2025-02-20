@@ -58,4 +58,3 @@ while read -r mac ip; do
         sed -i "/$mac/d" "$KNOWN_HOSTS_FILE"
     fi
 done < "$KNOWN_HOSTS_FILE"
-
