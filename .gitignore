@@ -1,0 +1,6 @@
+Logs/
+oui_db/
+*.db
+*.enc
+*.txt
+

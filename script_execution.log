@@ -1,0 +1,378 @@
+===== Εκκίνηση διαδικασίας =====
+[Fri Feb 28 04:17:19 PM EET 2025] Ξεκινάει η εκτέλεση των scripts...
+[Fri Feb 28 04:17:19 PM EET 2025] Εκτελείται: create_device_list_db.sh...
+2025-02-28 16:17:19 - 🔄 Starting create device list script...
+2025-02-28 16:17:19 - ✅ sqlite3 is already installed.
+2025-02-28 16:17:19 - ✅ ip is already installed.
+2025-02-28 16:17:19 - ✅ nmap is already installed.
+2025-02-28 16:17:19 - ✅ python3 is already installed.
+2025-02-28 16:17:19 - ✅ Database file exists: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:19 - ✅ Database is not locked.
+2025-02-28 16:17:19 - ✅ Database file is writable.
+2025-02-28 16:17:19 - 📂 Checking database: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:19 - ✅ Database initialized successfully.
+2025-02-28 16:17:19 - 🔎 Detecting available subnets...
+2025-02-28 16:17:19 - 🌍 Detected subnets: 127.0.0.1/8
+192.168.1.180/24
+2025-02-28 16:17:19 - 🔎 Performing ARP scan...
+2025-02-28 16:17:19 - ℹ️ ARP scan output: 192.168.1.135 7c:c2:94:d5:f9:fe
+192.168.1.172 c2:8f:5a:10:b4:5b
+192.168.1.1 74:24:9f:33:76:4c
+192.168.1.2 08:bf:b8:04:f6:76
+192.168.1.210 9c:a2:f4:91:02:f7
+192.168.1.227 b8:27:eb:7b:e6:0b
+192.168.1.234 80:76:c2:12:a6:81
+192.168.1.239 00:03:50:d4:c9:94
+192.168.1.250 8e:f5:72:6b:65:86
+192.168.1.253 70:8b:cd:d4:1c:b9
+192.168.1.254 60:5b:30:35:a9:65
+192.168.1.40 ae:6c:f6:c7:3f:0a
+192.168.1.45 dc:cd:18:60:d8:e9
+192.168.1.53 08:ea:40:f9:ea:6b
+192.168.1.66 ec:8e:b5:d1:93:b9
+192.168.1.96 c8:28:32:2c:e4:82
+192.168.2.1 70:8b:cd:d4:1c:b8
+2025-02-28 16:17:20 - ✅ ARP scan complete. Entries updated.
+2025-02-28 16:17:20 - 🔍 Running Nmap scan...
+2025-02-28 16:17:20 - ⚠️ Running Nmap without root privileges may not detect all devices.
+Failed to resolve "127.0.0.1/8
+192.168.1.180".
+WARNING: No targets were specified, so 0 hosts scanned.
+2025-02-28 16:17:20 - ℹ️ Nmap scan output: 
+2025-02-28 16:17:20 - ⚠️ Nmap scan found no devices.
+2025-02-28 16:17:20 - 🔄 Checking and removing duplicate MAC entries...
+2025-02-28 16:17:20 - ✅ Duplicate MAC entries removed.
+2025-02-28 16:17:20 - 🎉 Network device list has been successfully updated!
+[Fri Feb 28 04:17:20 PM EET 2025] Ολοκληρώθηκε: create_device_list_db.sh
+-------------------------
+[Fri Feb 28 04:17:20 PM EET 2025] Εκτελείται: setup_status.sh...
+2025-02-28 16:17:20 - 🔄 Starting create device status list script...
+2025-02-28 16:17:20 - 🚀 Starting network scan script.
+2025-02-28 16:17:20 - ✅ sqlite3 is already installed.
+2025-02-28 16:17:20 - ✅ ip is already installed.
+2025-02-28 16:17:20 - ✅ ping is already installed.
+2025-02-28 16:17:20 - ✅ Database file exists: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:20 - ✅ Database is not locked.
+2025-02-28 16:17:20 - ✅ Database file is writable.
+2025-02-28 16:17:20 - ✅ Table 'devices' exists.
+2025-02-28 16:17:20 - ✅ Table 'device_status_history' exists.
+2025-02-28 16:17:20 - ✅ Column 'status' already exists.
+2025-02-28 16:17:20 - 🔄 Fetching IP addresses from devices table...
+2025-02-28 16:17:20 - Device with IP 192.168.1.1 is Online
+2025-02-28 16:17:20 - 📊 Status change logged for device with IP 192.168.1.1.
+2025-02-28 16:17:21 - Device with IP 192.168.1.2 is Online
+2025-02-28 16:17:21 - 📊 Status change logged for device with IP 192.168.1.2.
+2025-02-28 16:17:22 - Device with IP 192.168.1.23 is Offline
+2025-02-28 16:17:22 - 📊 Status change logged for device with IP 192.168.1.23.
+2025-02-28 16:17:22 - Device with IP 192.168.1.40 is Online
+2025-02-28 16:17:22 - 📊 Status change logged for device with IP 192.168.1.40.
+2025-02-28 16:17:23 - Device with IP 192.168.1.45 is Offline
+2025-02-28 16:17:23 - 📊 Status change logged for device with IP 192.168.1.45.
+2025-02-28 16:17:23 - Device with IP 192.168.1.53 is Online
+2025-02-28 16:17:23 - 📊 Status change logged for device with IP 192.168.1.53.
+2025-02-28 16:17:23 - Device with IP 192.168.1.66 is Online
+2025-02-28 16:17:23 - 📊 Status change logged for device with IP 192.168.1.66.
+2025-02-28 16:17:23 - Device with IP 192.168.1.96 is Online
+2025-02-28 16:17:23 - 📊 Status change logged for device with IP 192.168.1.96.
+2025-02-28 16:17:23 - Device with IP 192.168.1.135 is Online
+2025-02-28 16:17:23 - 📊 Status change logged for device with IP 192.168.1.135.
+2025-02-28 16:17:23 - Device with IP 192.168.1.172 is Online
+2025-02-28 16:17:24 - 📊 Status change logged for device with IP 192.168.1.172.
+2025-02-28 16:17:25 - Device with IP 192.168.1.186 is Offline
+2025-02-28 16:17:25 - 📊 Status change logged for device with IP 192.168.1.186.
+2025-02-28 16:17:25 - Device with IP 192.168.1.210 is Online
+2025-02-28 16:17:25 - 📊 Status change logged for device with IP 192.168.1.210.
+2025-02-28 16:17:25 - Device with IP 192.168.1.227 is Online
+2025-02-28 16:17:25 - 📊 Status change logged for device with IP 192.168.1.227.
+2025-02-28 16:17:25 - Device with IP 192.168.1.234 is Online
+2025-02-28 16:17:25 - 📊 Status change logged for device with IP 192.168.1.234.
+2025-02-28 16:17:25 - Device with IP 192.168.1.239 is Online
+2025-02-28 16:17:25 - 📊 Status change logged for device with IP 192.168.1.239.
+2025-02-28 16:17:26 - Device with IP 192.168.1.241 is Offline
+2025-02-28 16:17:26 - 📊 Status change logged for device with IP 192.168.1.241.
+2025-02-28 16:17:27 - Device with IP 192.168.1.250 is Offline
+2025-02-28 16:17:27 - 📊 Status change logged for device with IP 192.168.1.250.
+2025-02-28 16:17:28 - Device with IP 192.168.1.253 is Offline
+2025-02-28 16:17:28 - 📊 Status change logged for device with IP 192.168.1.253.
+2025-02-28 16:17:28 - Device with IP 192.168.1.254 is Online
+2025-02-28 16:17:28 - 📊 Status change logged for device with IP 192.168.1.254.
+2025-02-28 16:17:30 - Device with IP 192.168.2.1 is Offline
+2025-02-28 16:17:30 - 📊 Status change logged for device with IP 192.168.2.1.
+[Fri Feb 28 04:17:30 PM EET 2025] Ολοκληρώθηκε: setup_status.sh
+-------------------------
+[Fri Feb 28 04:17:30 PM EET 2025] Εκτελείται: reorder.py...
+🔍 reorder.py script started.
+INFO:root:Logger initialized.
+2025-02-28 16:17:30,484 - INFO - Logger initialized.
+INFO:root:Starting database normalization process.
+2025-02-28 16:17:30,485 - INFO - Starting database normalization process.
+INFO:root:Table structure retrieved: ['id', 'ipv4', 'mac', 'vendor', 'status']
+2025-02-28 16:17:30,490 - INFO - Table structure retrieved: ['id', 'ipv4', 'mac', 'vendor', 'status']
+INFO:root:Found 20 devices. Sorting and updating...
+2025-02-28 16:17:30,493 - INFO - Found 20 devices. Sorting and updating...
+INFO:root:First row after sorting: (1, '192.168.1.1', '74:24:9f:33:76:4c', 'TIBRO Corp.\r', 'Online')
+2025-02-28 16:17:30,496 - INFO - First row after sorting: (1, '192.168.1.1', '74:24:9f:33:76:4c', 'TIBRO Corp.\r', 'Online')
+INFO:root:New data inserted successfully.
+2025-02-28 16:17:30,500 - INFO - New data inserted successfully.
+INFO:root:Database successfully reordered and updated.
+✅ Database successfully reordered and updated.
+2025-02-28 16:17:30,524 - INFO - Database successfully reordered and updated.
+[Fri Feb 28 04:17:30 PM EET 2025] Ολοκληρώθηκε: reorder.py
+-------------------------
+[Fri Feb 28 04:17:30 PM EET 2025] Εκτελείται: vendor_lookup.sh...
+2025-02-28 16:17:30 - 🔄 Starting vendor update script...
+2025-02-28 16:17:30 - ✅ Database file exists: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:30 - ✅ Database is not locked.
+2025-02-28 16:17:30 - ✅ Database file is writable.
+2025-02-28 16:17:30 - ✅ Table 'oui_data' exists.
+2025-02-28 16:17:30 - ✅ Column 'vendor' already exists in 'oui_data'.
+2025-02-28 16:17:30 - ✅ Table 'devices' exists.
+2025-02-28 16:17:30 - ✅ Column 'vendor' already exists in 'devices'.
+2025-02-28 16:17:31 - ✅ Table 'device_status_history' exists.
+2025-02-28 16:17:31 - ✅ Column 'vendor' already exists in 'device_status_history'.
+2025-02-28 16:17:31 - 🔄 Fetching MAC addresses from devices table...
+2025-02-28 16:17:31 - ✅ Found 20 MAC addresses to process in devices.
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 00:03:50:d4:c9:94 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 000350
+2025-02-28 16:17:31 - ✅ Found vendor: BTICINO SPA
+2025-02-28 16:17:31 - ✔ Updated 00:03:50:d4:c9:94 -> BTICINO SPA in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 08:bf:b8:04:f6:76 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 08BFB8
+2025-02-28 16:17:31 - ✅ Found vendor: ASUSTek COMPUTER INC.
+2025-02-28 16:17:31 - ✔ Updated 08:bf:b8:04:f6:76 -> ASUSTek COMPUTER INC. in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 08:ea:40:f9:ea:6b for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 08EA40
+2025-02-28 16:17:31 - ✅ Found vendor: SHENZHEN BILIAN ELECTRONIC CO.，LTD
+2025-02-28 16:17:31 - ✔ Updated 08:ea:40:f9:ea:6b -> SHENZHEN BILIAN ELECTRONIC CO.，LTD in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 5a:bf:71:39:9b:55 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 5ABF71
+2025-02-28 16:17:31 - ⚠️  Vendor not found for OUI 5ABF71. Setting as 'Unknown'.
+2025-02-28 16:17:31 - ✔ Updated 5a:bf:71:39:9b:55 -> Unknown in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 60:5b:30:35:a9:65 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 605B30
+2025-02-28 16:17:31 - ✅ Found vendor: Dell Inc.
+2025-02-28 16:17:31 - ✔ Updated 60:5b:30:35:a9:65 -> Dell Inc. in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 66:c9:3e:2f:7f:d0 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 66C93E
+2025-02-28 16:17:31 - ⚠️  Vendor not found for OUI 66C93E. Setting as 'Unknown'.
+2025-02-28 16:17:31 - ✔ Updated 66:c9:3e:2f:7f:d0 -> Unknown in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 70:8b:cd:d4:1c:b8 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 708BCD
+2025-02-28 16:17:31 - ✅ Found vendor: ASUSTek COMPUTER INC.
+2025-02-28 16:17:31 - ✔ Updated 70:8b:cd:d4:1c:b8 -> ASUSTek COMPUTER INC. in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 70:8b:cd:d4:1c:b9 for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 708BCD
+2025-02-28 16:17:31 - ✅ Found vendor: ASUSTek COMPUTER INC.
+2025-02-28 16:17:31 - ✔ Updated 70:8b:cd:d4:1c:b9 -> ASUSTek COMPUTER INC. in devices
+2025-02-28 16:17:31 - 🔍 Processing MAC address: 74:24:9f:33:76:4c for table devices
+2025-02-28 16:17:31 - 🔢 Extracted OUI: 74249F
+2025-02-28 16:17:31 - ✅ Found vendor: TIBRO Corp.
+2025-02-28 16:17:32 - ✔ Updated 74:24:9f:33:76:4c -> TIBRO Corp. in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: 7c:c2:94:d5:f9:fe for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: 7CC294
+2025-02-28 16:17:32 - ✅ Found vendor: Beijing Xiaomi Mobile Software Co., Ltd
+2025-02-28 16:17:32 - ✔ Updated 7c:c2:94:d5:f9:fe -> Beijing Xiaomi Mobile Software Co., Ltd in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: 80:76:c2:12:a6:81 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: 8076C2
+2025-02-28 16:17:32 - ✅ Found vendor: GD Midea Air-Conditioning Equipment Co.,Ltd.
+2025-02-28 16:17:32 - ✔ Updated 80:76:c2:12:a6:81 -> GD Midea Air-Conditioning Equipment Co.,Ltd. in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: 8e:f5:72:6b:65:86 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: 8EF572
+2025-02-28 16:17:32 - ⚠️  Vendor not found for OUI 8EF572. Setting as 'Unknown'.
+2025-02-28 16:17:32 - ✔ Updated 8e:f5:72:6b:65:86 -> Unknown in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: 9c:a2:f4:91:02:f7 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: 9CA2F4
+2025-02-28 16:17:32 - ✅ Found vendor: TP-Link Corporation Limited
+2025-02-28 16:17:32 - ✔ Updated 9c:a2:f4:91:02:f7 -> TP-Link Corporation Limited in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: ae:6c:f6:c7:3f:0a for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: AE6CF6
+2025-02-28 16:17:32 - ⚠️  Vendor not found for OUI AE6CF6. Setting as 'Unknown'.
+2025-02-28 16:17:32 - ✔ Updated ae:6c:f6:c7:3f:0a -> Unknown in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: b8:27:eb:7b:e6:0b for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: B827EB
+2025-02-28 16:17:32 - ✅ Found vendor: Raspberry Pi Foundation
+2025-02-28 16:17:32 - ✔ Updated b8:27:eb:7b:e6:0b -> Raspberry Pi Foundation in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: c2:8f:5a:10:b4:5b for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: C28F5A
+2025-02-28 16:17:32 - ⚠️  Vendor not found for OUI C28F5A. Setting as 'Unknown'.
+2025-02-28 16:17:32 - ✔ Updated c2:8f:5a:10:b4:5b -> Unknown in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: c6:62:78:43:49:48 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: C66278
+2025-02-28 16:17:32 - ⚠️  Vendor not found for OUI C66278. Setting as 'Unknown'.
+2025-02-28 16:17:32 - ✔ Updated c6:62:78:43:49:48 -> Unknown in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: c8:28:32:2c:e4:82 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: C82832
+2025-02-28 16:17:32 - ✅ Found vendor: Beijing Xiaomi Electronics Co., Ltd.
+2025-02-28 16:17:32 - ✔ Updated c8:28:32:2c:e4:82 -> Beijing Xiaomi Electronics Co., Ltd. in devices
+2025-02-28 16:17:32 - 🔍 Processing MAC address: dc:cd:18:60:d8:e9 for table devices
+2025-02-28 16:17:32 - 🔢 Extracted OUI: DCCD18
+2025-02-28 16:17:33 - ✅ Found vendor: Nintendo Co.,Ltd
+2025-02-28 16:17:33 - ✔ Updated dc:cd:18:60:d8:e9 -> Nintendo Co.,Ltd in devices
+2025-02-28 16:17:33 - 🔍 Processing MAC address: ec:8e:b5:d1:93:b9 for table devices
+2025-02-28 16:17:33 - 🔢 Extracted OUI: EC8EB5
+2025-02-28 16:17:33 - ✅ Found vendor: Hewlett Packard
+2025-02-28 16:17:33 - ✔ Updated ec:8e:b5:d1:93:b9 -> Hewlett Packard in devices
+2025-02-28 16:17:33 - 🔄 Fetching MAC addresses from device_status_history table...
+2025-02-28 16:17:33 - ✅ Found 13 MAC addresses to process in device_status_history.
+2025-02-28 16:17:33 - 🔍 Processing MAC address: dc:cd:18:60:d8:e9 for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: DCCD18
+2025-02-28 16:17:33 - ✅ Found vendor: Nintendo Co.,Ltd
+2025-02-28 16:17:33 - ✔ Updated dc:cd:18:60:d8:e9 -> Nintendo Co.,Ltd in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: 08:ea:40:f9:ea:6b for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: 08EA40
+2025-02-28 16:17:33 - ✅ Found vendor: SHENZHEN BILIAN ELECTRONIC CO.，LTD
+2025-02-28 16:17:33 - ✔ Updated 08:ea:40:f9:ea:6b -> SHENZHEN BILIAN ELECTRONIC CO.，LTD in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: ec:8e:b5:d1:93:b9 for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: EC8EB5
+2025-02-28 16:17:33 - ✅ Found vendor: Hewlett Packard
+2025-02-28 16:17:33 - ✔ Updated ec:8e:b5:d1:93:b9 -> Hewlett Packard in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: c8:28:32:2c:e4:82 for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: C82832
+2025-02-28 16:17:33 - ✅ Found vendor: Beijing Xiaomi Electronics Co., Ltd.
+2025-02-28 16:17:33 - ✔ Updated c8:28:32:2c:e4:82 -> Beijing Xiaomi Electronics Co., Ltd. in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: 7c:c2:94:d5:f9:fe for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: 7CC294
+2025-02-28 16:17:33 - ✅ Found vendor: Beijing Xiaomi Mobile Software Co., Ltd
+2025-02-28 16:17:33 - ✔ Updated 7c:c2:94:d5:f9:fe -> Beijing Xiaomi Mobile Software Co., Ltd in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: 9c:a2:f4:91:02:f7 for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: 9CA2F4
+2025-02-28 16:17:33 - ✅ Found vendor: TP-Link Corporation Limited
+2025-02-28 16:17:33 - ✔ Updated 9c:a2:f4:91:02:f7 -> TP-Link Corporation Limited in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: b8:27:eb:7b:e6:0b for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: B827EB
+2025-02-28 16:17:33 - ✅ Found vendor: Raspberry Pi Foundation
+2025-02-28 16:17:33 - ✔ Updated b8:27:eb:7b:e6:0b -> Raspberry Pi Foundation in device_status_history
+2025-02-28 16:17:33 - 🔍 Processing MAC address: 80:76:c2:12:a6:81 for table device_status_history
+2025-02-28 16:17:33 - 🔢 Extracted OUI: 8076C2
+2025-02-28 16:17:33 - ✅ Found vendor: GD Midea Air-Conditioning Equipment Co.,Ltd.
+2025-02-28 16:17:34 - ✔ Updated 80:76:c2:12:a6:81 -> GD Midea Air-Conditioning Equipment Co.,Ltd. in device_status_history
+2025-02-28 16:17:34 - 🔍 Processing MAC address: 00:03:50:d4:c9:94 for table device_status_history
+2025-02-28 16:17:34 - 🔢 Extracted OUI: 000350
+2025-02-28 16:17:34 - ✅ Found vendor: BTICINO SPA
+2025-02-28 16:17:34 - ✔ Updated 00:03:50:d4:c9:94 -> BTICINO SPA in device_status_history
+2025-02-28 16:17:34 - 🔍 Processing MAC address: 60:5b:30:35:a9:65 for table device_status_history
+2025-02-28 16:17:34 - 🔢 Extracted OUI: 605B30
+2025-02-28 16:17:34 - ✅ Found vendor: Dell Inc.
+2025-02-28 16:17:34 - ✔ Updated 60:5b:30:35:a9:65 -> Dell Inc. in device_status_history
+2025-02-28 16:17:34 - 🔍 Processing MAC address: 70:8b:cd:d4:1c:b8 for table device_status_history
+2025-02-28 16:17:34 - 🔢 Extracted OUI: 708BCD
+2025-02-28 16:17:34 - ✅ Found vendor: ASUSTek COMPUTER INC.
+2025-02-28 16:17:34 - ✔ Updated 70:8b:cd:d4:1c:b8 -> ASUSTek COMPUTER INC. in device_status_history
+2025-02-28 16:17:34 - 🔍 Processing MAC address: ae:6c:f6:c7:3f:0a for table device_status_history
+2025-02-28 16:17:34 - 🔢 Extracted OUI: AE6CF6
+2025-02-28 16:17:34 - ⚠️  Vendor not found for OUI AE6CF6. Setting as 'Unknown'.
+2025-02-28 16:17:34 - ✔ Updated ae:6c:f6:c7:3f:0a -> Unknown in device_status_history
+2025-02-28 16:17:34 - 🔍 Processing MAC address: ae:6c:f6:c7:3f:0a for table device_status_history
+2025-02-28 16:17:34 - 🔢 Extracted OUI: AE6CF6
+2025-02-28 16:17:34 - ⚠️  Vendor not found for OUI AE6CF6. Setting as 'Unknown'.
+2025-02-28 16:17:34 - ✔ Updated ae:6c:f6:c7:3f:0a -> Unknown in device_status_history
+2025-02-28 16:17:34 - 🎉 SUCCESS: Vendor lookup completed successfully.
+[Fri Feb 28 04:17:34 PM EET 2025] Ολοκληρώθηκε: vendor_lookup.sh
+-------------------------
+[Fri Feb 28 04:17:34 PM EET 2025] Εκτελείται: monitor_status.sh...
+2025-02-28 16:17:34 - 🔄 Starting network device monitoring script...
+2025-02-28 16:17:34 - ✅ gpg is already installed.
+2025-02-28 16:17:34 - ✅ openssl is already installed.
+2025-02-28 16:17:34 - ✅ sqlite3 is already installed.
+2025-02-28 16:17:34 - ✅ ip is already installed.
+2025-02-28 16:17:34 - ✅ crontab is already installed.
+2025-02-28 16:17:34 - ✅ curl is already installed.
+2025-02-28 16:17:34 - 🔍 Checking if script is scheduled in cron...
+2025-02-28 16:17:34 - ✅ Script is correctly scheduled in cron.
+2025-02-28 16:17:34 - 📂 Running database creation script...
+2025-02-28 16:17:34 - 🔄 Starting create device list script...
+2025-02-28 16:17:34 - ✅ sqlite3 is already installed.
+2025-02-28 16:17:34 - ✅ ip is already installed.
+2025-02-28 16:17:34 - ✅ nmap is already installed.
+2025-02-28 16:17:34 - ✅ python3 is already installed.
+2025-02-28 16:17:34 - ✅ Database file exists: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:35 - ✅ Database is not locked.
+2025-02-28 16:17:35 - ✅ Database file is writable.
+2025-02-28 16:17:35 - 📂 Checking database: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:35 - ✅ Database initialized successfully.
+2025-02-28 16:17:35 - 🔎 Detecting available subnets...
+2025-02-28 16:17:35 - 🌍 Detected subnets: 127.0.0.1/8
+192.168.1.180/24
+2025-02-28 16:17:35 - 🔎 Performing ARP scan...
+2025-02-28 16:17:35 - ℹ️ ARP scan output: 192.168.1.135 7c:c2:94:d5:f9:fe
+192.168.1.172 c2:8f:5a:10:b4:5b
+192.168.1.1 74:24:9f:33:76:4c
+192.168.1.2 08:bf:b8:04:f6:76
+192.168.1.210 9c:a2:f4:91:02:f7
+192.168.1.227 b8:27:eb:7b:e6:0b
+192.168.1.234 80:76:c2:12:a6:81
+192.168.1.239 00:03:50:d4:c9:94
+192.168.1.250 8e:f5:72:6b:65:86
+192.168.1.253 70:8b:cd:d4:1c:b9
+192.168.1.254 60:5b:30:35:a9:65
+192.168.1.40 ae:6c:f6:c7:3f:0a
+192.168.1.45 dc:cd:18:60:d8:e9
+192.168.1.53 08:ea:40:f9:ea:6b
+192.168.1.66 ec:8e:b5:d1:93:b9
+192.168.1.96 c8:28:32:2c:e4:82
+192.168.2.1 70:8b:cd:d4:1c:b8
+2025-02-28 16:17:35 - ✅ ARP scan complete. Entries updated.
+2025-02-28 16:17:35 - 🔍 Running Nmap scan...
+2025-02-28 16:17:35 - ⚠️ Running Nmap without root privileges may not detect all devices.
+Failed to resolve "127.0.0.1/8
+192.168.1.180".
+WARNING: No targets were specified, so 0 hosts scanned.
+2025-02-28 16:17:35 - ℹ️ Nmap scan output: 
+2025-02-28 16:17:35 - ⚠️ Nmap scan found no devices.
+2025-02-28 16:17:35 - 🔄 Checking and removing duplicate MAC entries...
+2025-02-28 16:17:35 - ✅ Duplicate MAC entries removed.
+2025-02-28 16:17:35 - 🎉 Network device list has been successfully updated!
+2025-02-28 16:17:35 - 📂 Database file found: /home/zagkon/repos/network_monitor/network_devices.db
+2025-02-28 16:17:35 - 🔄 Checking devices in the database...
+2025-02-28 16:17:35 - 🔍 Checking device: ID=1, IP=192.168.1.1, Current Status=Online
+2025-02-28 16:17:36 - ✅ Device 192.168.1.1 is online.
+2025-02-28 16:17:36 - ℹ️ No status change detected for device 192.168.1.1.
+2025-02-28 16:17:36 - 🔍 Checking device: ID=2, IP=192.168.1.2, Current Status=Online
+2025-02-28 16:17:37 - ✅ Device 192.168.1.2 is online.
+2025-02-28 16:17:37 - ℹ️ No status change detected for device 192.168.1.2.
+2025-02-28 16:17:38 - 🔍 Checking device: ID=3, IP=192.168.1.23, Current Status=Offline
+2025-02-28 16:17:41 - ❌ Device 192.168.1.23 is offline.
+2025-02-28 16:17:41 - ℹ️ No status change detected for device 192.168.1.23.
+2025-02-28 16:17:41 - 🔍 Checking device: ID=4, IP=192.168.1.40, Current Status=Online
+2025-02-28 16:17:42 - ✅ Device 192.168.1.40 is online.
+2025-02-28 16:17:42 - ℹ️ No status change detected for device 192.168.1.40.
+2025-02-28 16:17:42 - 🔍 Checking device: ID=5, IP=192.168.1.45, Current Status=Offline
+2025-02-28 16:17:47 - ❌ Device 192.168.1.45 is offline.
+2025-02-28 16:17:47 - ℹ️ No status change detected for device 192.168.1.45.
+2025-02-28 16:17:47 - 🔍 Checking device: ID=6, IP=192.168.1.53, Current Status=Online
+2025-02-28 16:17:48 - ✅ Device 192.168.1.53 is online.
+2025-02-28 16:17:48 - ℹ️ No status change detected for device 192.168.1.53.
+2025-02-28 16:17:48 - 🔍 Checking device: ID=7, IP=192.168.1.66, Current Status=Online
+2025-02-28 16:17:49 - ✅ Device 192.168.1.66 is online.
+2025-02-28 16:17:49 - ℹ️ No status change detected for device 192.168.1.66.
+2025-02-28 16:17:49 - 🔍 Checking device: ID=8, IP=192.168.1.96, Current Status=Online
+2025-02-28 16:17:50 - ✅ Device 192.168.1.96 is online.
+2025-02-28 16:17:50 - ℹ️ No status change detected for device 192.168.1.96.
+2025-02-28 16:17:50 - 🔍 Checking device: ID=9, IP=192.168.1.135, Current Status=Online
+2025-02-28 16:17:51 - ✅ Device 192.168.1.135 is online.
+2025-02-28 16:17:51 - ℹ️ No status change detected for device 192.168.1.135.
+2025-02-28 16:17:51 - 🔍 Checking device: ID=10, IP=192.168.1.172, Current Status=Online
+2025-02-28 16:17:52 - ✅ Device 192.168.1.172 is online.
+2025-02-28 16:17:52 - ℹ️ No status change detected for device 192.168.1.172.
+2025-02-28 16:17:52 - 🔍 Checking device: ID=11, IP=192.168.1.186, Current Status=Offline
+2025-02-28 16:17:56 - ❌ Device 192.168.1.186 is offline.
+2025-02-28 16:17:56 - ℹ️ No status change detected for device 192.168.1.186.
+2025-02-28 16:17:56 - 🔍 Checking device: ID=12, IP=192.168.1.210, Current Status=Online
+2025-02-28 16:17:57 - ✅ Device 192.168.1.210 is online.
+2025-02-28 16:17:57 - ℹ️ No status change detected for device 192.168.1.210.
+2025-02-28 16:17:57 - 🔍 Checking device: ID=13, IP=192.168.1.227, Current Status=Online
+2025-02-28 16:17:58 - ✅ Device 192.168.1.227 is online.
+2025-02-28 16:17:58 - ℹ️ No status change detected for device 192.168.1.227.
+2025-02-28 16:17:58 - 🔍 Checking device: ID=14, IP=192.168.1.234, Current Status=Online
+2025-02-28 16:17:59 - ✅ Device 192.168.1.234 is online.
+2025-02-28 16:17:59 - ℹ️ No status change detected for device 192.168.1.234.
+2025-02-28 16:17:59 - 🔍 Checking device: ID=15, IP=192.168.1.239, Current Status=Online
+2025-02-28 16:18:00 - ✅ Device 192.168.1.239 is online.
+2025-02-28 16:18:00 - ℹ️ No status change detected for device 192.168.1.239.
+2025-02-28 16:18:00 - 🔍 Checking device: ID=16, IP=192.168.1.241, Current Status=Offline
+2025-02-28 16:18:03 - ❌ Device 192.168.1.241 is offline.
+2025-02-28 16:18:03 - ℹ️ No status change detected for device 192.168.1.241.
+2025-02-28 16:18:03 - 🔍 Checking device: ID=17, IP=192.168.1.250, Current Status=Offline
+2025-02-28 16:18:05 - ✅ Device 192.168.1.250 is online.
+2025-02-28 16:18:05 - 🔄 Status change detected for device 192.168.1.250: Offline ➡ Online
+monitor_status.sh: line 115: send_notification: command not found
